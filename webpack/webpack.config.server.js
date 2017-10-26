@@ -1,18 +1,22 @@
 // prettier-ignore
 const fs = require('fs');
 const path = require('path');
-// webpack-node-externals: exclude node modules
 const nodeExternals = require('webpack-node-externals');
 
+console.log('>>>>>>> webpack.config.server.js > process.env.BOOTSTRAPRC_LOCATION <<<<<<<<: ', process.env.BOOTSTRAPRC_LOCATION);
+console.log('>>>>>>> webpack.config.server.js > process.env.NODE_ENV <<<<<<<<: ', process.env.NODE_ENV);
+
 module.exports = {
+
   entry: path.join(__dirname, '../server/server.js'),
+
   output: {
     path: path.join(__dirname, '../build/server'),
     filename: 'server.bundle.js',
     publicPath: '/build/server/'
   },
 
-  target: 'node', // in order to ignore built-in modules like path, fs, etc.
+  target: 'node',
 
   node: {
     __filename: true,
@@ -20,7 +24,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.scss', '.css'],
     modules: ['client', 'node_modules']
   },
 
@@ -30,6 +34,33 @@ module.exports = {
     })
   ], // in order to ignore all modules in node_modules folder
 
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', ['es2015', { modules: false }], 'stage-0'],
+          plugins: [
+            'css-modules-transform', 
+            {
+              preprocessCss: '../loaders/sassLoader.js',
+              generateScopedName: '[name]_[local]_[hash:base64:5]',
+              extensions: ['.scss']
+            }
+          ]
+        }
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
+    ]
+  }
+};
+
+/*
   module: {
     loaders: [
       {
@@ -62,4 +93,19 @@ module.exports = {
       }
     ]
   }
-};
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

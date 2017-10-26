@@ -8,9 +8,11 @@ const webpackIsomorphicToolsConfig = require('./webpack.config.isomorphic');
 const path = require('path');
 const bootstrapEntryPoints = require('./webpack.bootstrap.config.js');
 
-console.log(`>>>>>>>>>>>>> webpack.config.prod > bootstrapEntryPoints.dev: ${bootstrapEntryPoints.prod}`);
+console.log('>>>>>>> webpack.config.prod.js > process.env.BOOTSTRAPRC_LOCATION <<<<<<<<: ', process.env.BOOTSTRAPRC_LOCATION);
+console.log('>>>>>>> webpack.config.prod.js > process.env.NODE_ENV <<<<<<<<: ', process.env.NODE_ENV);
 
 module.exports = {
+
   devtool: 'hidden-source-map',
 
   entry: {
@@ -35,7 +37,7 @@ module.exports = {
   // target: 'node',
 
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.scss', '.css'],
     modules: ['client', 'node_modules']
   },
 
@@ -70,8 +72,6 @@ module.exports = {
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        // Limiting the size of the woff fonts breaks font-awesome ONLY for the extract text plugin
-        // use: "url?limit=10000"
         use: 'url-loader',
       },
       {

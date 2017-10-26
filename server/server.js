@@ -18,6 +18,8 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import dotenv from 'dotenv';
 
+console.log('>>>>>>>> server.js <<<<<<<<<<<');
+
 global.__CLIENT__ = false;
 global.__SERVER__ = true;
 global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';

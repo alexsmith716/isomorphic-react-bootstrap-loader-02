@@ -1,10 +1,10 @@
 
-// use: 'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]__[hash:base64:5]' + '!postcss-loader' + '!sass-loader',
-
 let cssModulesIdentName = '[name]__[local]__[hash:base64:5]';
 if (process.env.NODE_ENV === 'production') {
   cssModulesIdentName = '[hash:base64]';
 }
+
+console.log('>>>>>>>> webpack.config.babel.js <<<<<<<<<<<<<<');
 
 module.exports = {
 

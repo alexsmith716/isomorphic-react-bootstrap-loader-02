@@ -1,5 +1,7 @@
 const sass = require('node-sass');
 
+console.log('>>>>>>>> sassLoader.js <<<<<<<<<<<');
+
 module.exports = (data, file) => {
 
     try {

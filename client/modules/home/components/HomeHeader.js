@@ -4,11 +4,14 @@ import styled from 'styled-components';
 import { media } from '../../../styles/breakpoints';
 import HomeSearch from './HomeSearch';
 
+import css from '../styles/Home.scss';
+import style from '../styles/style.css';
+
 const HomeHeader = (props: { showHeaderText: true }) => (
   <Header>
     {props.showHeaderText && (
-      <HeaderText>
-        Find the best jobs<br />at the best tech companies
+      <HeaderText className={style.colorMarginStyle}>
+        Find the best jobs<br />at the best tech companies.
       </HeaderText>
     )}
     <HomeSearch />

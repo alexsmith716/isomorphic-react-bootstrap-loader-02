@@ -12,7 +12,7 @@ const fs = require('fs');
 const bootstraprcCustomLocation = '/Users/robertsnith/Documents/PDFs001/isomorphic-react-bootstrap-loader-02/webpack/.bootstraprc';
 // 'bootstrap-loader/lib/bootstrap.loader?extractStyles&configFilePath=${__dirname}/.bootstraprc!bootstrap-loader/no-op.js';
 
-console.log('>>>>>>>> webpack.bootstrap.config.js <<<<<<<<<<<<2: ', bootstraprcCustomLocation);
+console.log('>>>>>>>> webpack.bootstrap.config.js <<<<<<<<<<<<');
 
 let defaultBootstraprcFileExists;
 
@@ -22,8 +22,6 @@ try {
 } catch (e) {
   defaultBootstraprcFileExists = false;
 }
-
-console.log('Using the bootstrap-loader defaultBootstraprcFileExists: ', defaultBootstraprcFileExists);
 
 if (!bootstraprcCustomLocation && !defaultBootstraprcFileExists) {
   console.log('You did not specify a \'bootstraprc-location\' ' + 'arg or a ./.boostraprc file in the root.');
