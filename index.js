@@ -1,4 +1,3 @@
-
 const WebpackIsomorphicTools = require('webpack-isomorphic-tools');
 const webpackIsomorphicToolsConfig = require('./webpack/webpack.config.isomorphic');
 const projectBasePath = require('path').resolve(__dirname, './');
@@ -15,9 +14,9 @@ require('babel-register')({
       },
       'css-modules-transform', 
       {
-        'preprocessCss': './loaders/sassLoader.js',
-        'generateScopedName': '[name]_[local]_[hash:base64:5]',
-        'extensions': ['.scss']
+        preprocessCss: './loaders/sassLoader.js',
+        generateScopedName: '[name]_[local]_[hash:base64:5]',
+        extensions: ['.scss']
       }
     ],
     'transform-es2015-modules-commonjs',

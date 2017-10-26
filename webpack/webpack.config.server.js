@@ -5,6 +5,7 @@ const nodeExternals = require('webpack-node-externals');
 
 console.log('>>>>>>> webpack.config.server.js > process.env.BOOTSTRAPRC_LOCATION <<<<<<<<: ', process.env.BOOTSTRAPRC_LOCATION);
 console.log('>>>>>>> webpack.config.server.js > process.env.NODE_ENV <<<<<<<<: ', process.env.NODE_ENV);
+console.log('>>>>>>> webpack.config.server.js > process.env.BABEL_DISABLE_CACHE <<<<<<<<: ', process.env.BABEL_DISABLE_CACHE);
 
 module.exports = {
 
@@ -23,16 +24,11 @@ module.exports = {
     __dirname: true
   },
 
-  resolve: {
-    extensions: ['.js', '.jsx', '.scss', '.css'],
-    modules: ['client', 'node_modules']
-  },
-
   externals: [
     nodeExternals({
       importType: 'commonjs'
     })
-  ], // in order to ignore all modules in node_modules folder
+  ],
 
   module: {
     loaders: [
@@ -43,12 +39,12 @@ module.exports = {
         query: {
           presets: ['react', ['es2015', { modules: false }], 'stage-0'],
           plugins: [
-            'css-modules-transform', 
-            {
-              preprocessCss: '../loaders/sassLoader.js',
-              generateScopedName: '[name]_[local]_[hash:base64:5]',
-              extensions: ['.scss']
-            }
+            ['css-modules-transform', {
+              preprocessCss: './loaders/sassLoader.js',
+              generateScopedName: '[name]__[local]__[hash:base64:5]',
+              extensions: ['.css', '.scss']
+            }],
+            ['transform-decorators-legacy']
           ]
         }
       },
@@ -79,9 +75,9 @@ module.exports = {
               },
               'css-modules-transform', 
               {
-                preprocessCss: '../loaders/sassLoader.js',
-                generateScopedName: '[name]_[local]_[hash:base64:5]',
-                extensions: ['.scss']
+                preprocessCss: './loaders/sassLoader.js',
+                generateScopedName: '[name]__[local]__[hash:base64:5]',
+                extensions: ['.css', '.scss']
               }
             ]
           ]
@@ -94,18 +90,3 @@ module.exports = {
     ]
   }
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

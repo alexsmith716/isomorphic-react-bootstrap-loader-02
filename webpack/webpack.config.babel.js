@@ -8,7 +8,6 @@ console.log('>>>>>>>> webpack.config.babel.js <<<<<<<<<<<<<<');
 
 module.exports = {
 
-
   output: {
     publicPath: '/',
     libraryTarget: 'commonjs2'
@@ -16,10 +15,9 @@ module.exports = {
 
 
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     modules: ['client', 'node_modules']
   },
-
 
   module: {
     loaders: [
@@ -39,6 +37,5 @@ module.exports = {
       },
     ]
   }
-
 
 };

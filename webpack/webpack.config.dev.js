@@ -1,4 +1,3 @@
-
 const webpack = require('webpack');
 const path = require('path');
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
