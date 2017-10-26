@@ -8,13 +8,14 @@ const bootstrapEntryPoints = require('./webpack.bootstrap.config');
 
 const PUBLIC_PATH = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/');
 
-console.log(`>>>>>>>>>>>>> webpack config dev > bootstrapEntryPoints.dev: ${bootstrapEntryPoints.dev}`);
+console.log('>>>>>>> webpack.config.dev.js > process.env.BOOTSTRAPRC_LOCATION <<<<<<<<: ', process.env.BOOTSTRAPRC_LOCATION);
+console.log('>>>>>>> webpack.config.dev.js > process.env.NODE_ENV <<<<<<<<: ', process.env.NODE_ENV);
 
 module.exports = {
   
   devtool: 'cheap-module-eval-source-map',
 
-  resolve: { extensions: ['*', '.js', '.jsx'] },
+  extensions: ['.js', '.jsx', '.scss', '.css'],
 
   entry: {
     app: [
