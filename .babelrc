@@ -68,5 +68,7 @@
 //
 //  "webpack.config.dev.js":
 //      (only used in development)
-//      (using "webpack.config.babel.js" via "index.js")
-//      (using "babel-register")
+//      (going through "./server/server" via "index.js")
+//      (initiated in "./server/server")
+//      (babel-loader using .babelrc for all non-node-module .jsx*$ files)
+//      (incorporated into "webpackDevMiddleware" && "webpackHotMiddleware")
