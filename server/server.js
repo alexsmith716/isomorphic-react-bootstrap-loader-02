@@ -30,12 +30,14 @@ const app = new express();
 
 if (process.env.NODE_ENV === 'development') {
   const compiler = webpack(config);
+
   app.use(
     webpackDevMiddleware(compiler, {
       noInfo: true,
       publicPath: config.output.publicPath
     })
   );
+  
   app.use(webpackHotMiddleware(compiler));
 }
 
