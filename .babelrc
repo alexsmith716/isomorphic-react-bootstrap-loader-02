@@ -10,11 +10,9 @@
       "passPerPreset": false,
       "presets": [
         "react",
-        [
-          "es2015",
-          { modules: false
-          }
-        ],
+        ["es2015", { 
+          modules: false 
+        }],
         "stage-0",
         "flow"
       ]
@@ -28,3 +26,47 @@
     "transform-es2015-modules-commonjs",
   ],
 }
+
+// "passPerPreset": true 
+//      (if true, every preset is applied individually without considering the others (order matters))
+//      (https://babeljs.io/docs/plugins/#plugin-preset-ordering)
+//
+//  "presets":
+//      (preset ordering is reversed (applied last to first))
+//
+//  "babel-register": 
+//      (one of the ways you can use Babel is through the require hook)
+//      (the require hook will bind itself to NODE's (server-side) require and automatically compile files on the fly)
+//      (all subsequent files required by NODE (server-side) with the extensions .es6, .es, .jsx and .js aretransformed by Babel)
+//
+//  "babel-node":
+//      (transpiles individual files && not their respective require files)
+//
+//  Plugins run before Presets.
+//  Plugin ordering is first to last.
+//  Preset ordering is reversed (last to first).
+//
+//  "start-dev && "start-prod":
+//      ("index.js" loaded)
+//      ("babel-register" used)
+//      (all subsequent files required by NODE (server-side) with the extensions .es6, .es, .jsx and .js are transformed by ("babel-register" ("babel")))
+//      (specified "plugins" in "index.js > babel-register" are applied to transformation)
+//      "NODE_ENV=development":
+//          (going through "./server/server" and initiating "webpack.config.dev.js" (see description below))
+//      "NODE_ENV=production":
+//          (going through "./build/server/server.bundle" >>> refer to "webpack.config.server.js" (see description below))
+//
+//  "webpack.config.prod.js":
+//      (only used in production)
+//      (babel-loader using .babelrc for all non-node-module .jsx*$ files)
+//
+//  "webpack.config.server.js":
+//      (only used in production)
+//      ("babelrc === true")(it's not set to "false" so it is "true")
+//      (babel-loader using .babelrc for all non-node-module .js$ files)
+//      (babel-loader using additional "query" config for all non-node-module .js$ files)
+//
+//  "webpack.config.dev.js":
+//      (only used in development)
+//      (using "webpack.config.babel.js" via "index.js")
+//      (using "babel-register")

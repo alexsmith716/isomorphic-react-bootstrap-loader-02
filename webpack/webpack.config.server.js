@@ -36,6 +36,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+        babelrc: true,
         query: {
           presets: ['react', ['es2015', { modules: false }], 'stage-0'],
           plugins: [

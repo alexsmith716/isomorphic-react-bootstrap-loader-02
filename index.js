@@ -3,6 +3,10 @@ const webpackIsomorphicToolsConfig = require('./webpack/webpack.config.isomorphi
 const projectBasePath = require('path').resolve(__dirname, './');
 
 console.log('>>>>>>>> ROOT > index.js <<<<<<<<<<<');
+// "babel-register":
+//  (one of the ways you can use Babel is through the require hook)
+//  (the require hook will bind itself to node's require and automatically compile files on the fly)
+//  (all subsequent files required by NODE with the extensions .es6, .es, .jsx and .js will be transformed by Babel)
 
 require('babel-register')({
   plugins: [
